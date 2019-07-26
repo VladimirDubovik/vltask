@@ -1,0 +1,2 @@
+servers = { {% for _host_ in groups.ghosts  %}{{ _host_ }}:{{ hostvars[_host_].ansible_port }}, {% endfor %} }
+

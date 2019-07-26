@@ -1,0 +1,5 @@
+touch ./log/log.txt
+echo "start at "$(date +"%Y.%m.%d %H:%M") >> ./log/log.txt
+cat ./config/text.txt
+cat ./config/config.cfg
+{% if print_cur_env is defined %}echo 'current inventory called {{ inventory_name }}'{% endif %}

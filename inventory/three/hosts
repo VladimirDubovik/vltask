@@ -1,0 +1,16 @@
+[ahosts]
+192.168.43.184
+
+[ghosts]
+192.168.43.249
+192.168.43.251
+192.168.43.253
+
+[localhost]
+192.168.43.110
+
+[ghosts:vars]
+ansible_port=125
+
+[all:vars]
+inventory_name=three

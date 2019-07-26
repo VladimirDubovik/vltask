@@ -1,0 +1,22 @@
+{% if inventory_name == 'one' %}
+variable volume is one
+{% elif inventory_name == 'two'  %}
+variable volume is two
+{% elif inventory_name == 'three' %}
+variable volume is three
+{% else %}
+variable volume is undefined
+{% endif %}
+some string
+{{ inventory_name }}
+
+
+{% if groups is defined %}
+{{ groups.ghosts }}
+{% endif %}
+
+{% for _host_ in groups.ghosts  %}
+{{ _host_ }}
+{{ hostvars[_host_].ansible_port }}
+{% endfor %}
+

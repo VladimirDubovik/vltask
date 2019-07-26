@@ -1,0 +1,17 @@
+#ahosts -- alive hosts
+[ahosts]
+192.168.43.184
+
+[ghosts]
+192.168.43.250
+192.168.43.251
+192.168.43.252
+
+[localhost]
+192.168.43.110
+
+[ghosts:vars]
+ansible_port=123
+
+[all:vars]
+inventory_name=one

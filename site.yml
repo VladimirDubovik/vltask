@@ -1,0 +1,45 @@
+---
+
+- name: task by Vladimir
+  user: test
+  hosts: ahosts
+  gather_facts: false
+
+  tasks:
+    - name: creating ./config folder on remote host
+      file:
+        path:  ./config
+        state: directory
+
+    - name: creating ./log folder on remote host
+      file:
+        path:  ./log
+        state: directory
+
+#    - name: show debugging information
+#      debug:
+#        var: vars
+#        var: _raw_params
+
+    - name: sending text file to remote host
+      template:
+        src: ./templates/text.j2
+        dest: ./config/text.txt
+
+    - name: sending config file to remote host
+      template:
+        src: ./templates/config.j2
+        dest: ./config/config.cfg
+
+    - name: sending shell-script file to remote host
+      template:
+        src: ./templates/script.j2
+        dest: ./script.sh
+ 
+    - name: execute shell-script file
+      command: sh ./script.sh
+      register: scr
+
+    - name: display shell file output
+      debug:
+        var: scr.stdout_lines
