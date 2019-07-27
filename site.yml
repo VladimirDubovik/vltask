@@ -16,20 +16,15 @@
         path:  ./log
         state: directory
 
-#    - name: show debugging information
-#      debug:
-#        var: vars
-#        var: _raw_params
-
     - name: sending text file to remote host
       template:
         src: ./templates/text.j2
         dest: ./config/text.txt
 
-    - name: sending config file to remote host
+    - name: sending settings file to remote host
       template:
-        src: ./templates/config.j2
-        dest: ./config/config.cfg
+        src: ./templates/settings.j2
+        dest: ./config/settings.cfg
 
     - name: sending shell-script file to remote host
       template:
