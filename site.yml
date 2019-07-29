@@ -4,6 +4,8 @@
   user: test
   hosts: ahosts
   gather_facts: false
+  vars: 
+    app_port: "{{ lookup('ini', 'app_port type=properties file=./templates/settings.j2') }}"
 
   tasks:
     - name: creating ./config folder on remote host
@@ -11,15 +13,15 @@
         path:  ./config
         state: directory
 
-    - name: creating ./log folder on remote host
+    - name: creating ./logs folder on remote host
       file:
-        path:  ./log
+        path:  ./logs
         state: directory
 
     - name: sending text file to remote host
       template:
         src: ./templates/text.j2
-        dest: ./config/text.txt
+        dest: ./config/text.txt        
 
     - name: sending settings file to remote host
       template:
@@ -35,6 +37,6 @@
       command: sh ./script.sh
       register: scr
 
-    - name: display shell file output
+    - name: display shell-script file output
       debug:
         var: scr.stdout_lines

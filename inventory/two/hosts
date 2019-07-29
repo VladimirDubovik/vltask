@@ -6,11 +6,5 @@
 192.168.43.252
 192.168.43.254
 
-[localhost]
-192.168.43.110
-
-[ghosts:vars]
-ansible_port=124
-
 [all:vars]
 inventory_name=two
