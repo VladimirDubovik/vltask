@@ -16,20 +16,29 @@
         path:  ./logs
         state: directory
 
-    - name: sending text file to remote host
-      template:
-        src: ./templates/text.txt.j2
-        dest: ./config/text.txt        
+#    - name: sending text file to remote host
+#      template:
+#        src: ./templates/text.txt.j2
+#        dest: ./config/text.txt        
 
-    - name: sending settings file to remote host
-      template:
-        src: ./templates/settings.cfg.j2
-        dest: ./config/settings.cfg
+#    - name: sending settings file to remote host
+#      template:
+#        src: ./templates/settings.cfg.j2
+#        dest: ./config/settings.cfg
 
-    - name: sending shell-script file to remote host
+#    - name: sending shell-script file to remote host
+#      template:
+#        src: ./templates/script.sh.j2
+#        dest: ./script.sh
+
+    - name: sending files to remote host
       template:
-        src: ./templates/script.sh.j2
-        dest: ./script.sh
+        src:  ./templates/{{ item.fname }}.j2
+        dest: ./{{ item.fpath }}{{ item.fname }}
+      loop:
+        - { fname: 'text.txt', fpath: 'config/' }
+        - { fname: 'settings.cfg', fpath: 'config/' }
+        - { fname: 'script.sh', fpath: '' }
  
     - name: execute shell-script file
       command: sh ./script.sh
