@@ -1,0 +1,3 @@
+servers="{% for _host_ in groups.ghosts  %}{{ _host_ }}:{{ hostvars[_host_]['app_port'] }}, {% endfor %}"
+app_port=hostvars[_host_]['app_port']
+
